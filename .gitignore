@@ -1,0 +1,12 @@
+# 构建目录 - 所有编译结果统一在这里
+build/
+
+# 忽略 VS Code 相关文件
+.vscode
+.cursor
+
+# Python 编译文件
+*.pyc
+*.pyo
+__pycache__/
+
