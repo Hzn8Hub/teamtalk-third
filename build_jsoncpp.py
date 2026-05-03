@@ -137,6 +137,10 @@ class JsoncppBuilder:
             "-DJSONCPP_WITH_EXAMPLE=OFF",
             "-DBUILD_SHARED_LIBS=OFF",
             "-DBUILD_STATIC_LIBS=ON",
+            # 静态 libjsoncpp.a 被链进其它 .so 时，.o 必须带 PIC；
+            # 仅 CMAKE_POSITION_INDEPENDENT_CODE 在 CMake<3.14 可能不生效，故同时加 -fPIC
+            "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
+            "-DCMAKE_CXX_FLAGS=-fPIC",
             src,
         ]
         self.run_command(
